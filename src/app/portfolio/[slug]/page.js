@@ -1,11 +1,9 @@
 // src/app/portfolio/[slug]/page.js
 
 // --- CORRECTED IMPORTS ---
-// This tells the file to go up three levels to find the 'lib' folder.
-import { client } from '../../../lib/sanity';
-import { urlFor } from '../../../lib/image';
+import { client } from '../../../src/lib/sanity';
+import { urlFor } from '../../../src/lib/image';
 // --- END OF CORRECTIONS ---
-
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 

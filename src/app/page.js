@@ -1,10 +1,12 @@
 // src/app/page.js
 
+// --- CORRECTED IMPORTS ---
 import Link from 'next/link';
-import { client } from '../../lib/sanity';
-import { urlFor } from '../../lib/image';
+import { client } from '../lib/sanity';
+import { urlFor } from '../lib/image';
 import Image from 'next/image';
-import './PortfolioGrid.css'; // <-- CRITICAL: This line imports the styles
+import './PortfolioGrid.css';
+// --- END OF CORRECTIONS ---
 
 async function getProjects() {
   const projects = await client.fetch(`*[_type == "project"] | order(_createdAt desc)`);
@@ -16,8 +18,6 @@ export default async function HomePage() {
 
   return (
     <main>
-      {/* You can add a Hero/Intro section here later */}
-      
       <section id="work" className="portfolio-section">
         <div className="container">
           <h2 className="section-title">Mi Portafolio</h2>
