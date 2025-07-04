@@ -1,8 +1,8 @@
 // src/app/portfolio/[slug]/page.js
 
-// --- CORRECTED IMPORTS ---
-import { client } from '../../../src/lib/sanity';
-import { urlFor } from '../../../src/lib/image';
+// --- THIS IS THE FINAL, CORRECTED IMPORT BLOCK ---
+import { client } from '../../../lib/sanity';
+import { urlFor } from '../../../lib/image';
 // --- END OF CORRECTIONS ---
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
