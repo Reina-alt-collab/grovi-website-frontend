@@ -1,70 +1,90 @@
 /* src/app/PortfolioGrid.css */
 
 .portfolio-section {
-  padding: 4rem 1rem; /* 64px top/bottom padding */
+  padding: 4rem 1rem; /* Adds space above and below the section */
+  background-color: #F8F5F1; /* Your warm off-white background */
 }
 
 .container {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .section-title {
-  font-size: 2.25rem; /* 36px */
+  font-size: 2.5rem; /* 40px */
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem; /* 32px */
+  margin-bottom: 3rem; /* 48px */
+  color: #242424; /* Your deep charcoal color */
 }
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem; /* 24px */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem; /* 32px */
 }
 
+/* This is the main card container */
 .portfolio-card {
   display: block;
-  position: relative;
+  position: relative; /* CRITICAL: This allows the overlay to be positioned inside it */
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 375px; /* Gives the card a fixed height */
 }
 
 .portfolio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* This styles the image itself */
 .portfolio-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensures the image covers the card without stretching */
+  z-index: 1; /* Puts the image in the back */
   transition: transform 0.4s ease;
 }
 
 .portfolio-card:hover .portfolio-image {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
+/* This is the dark overlay that holds the text */
 .portfolio-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 2rem 1.5rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Pushes text to the bottom */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0,0,0,0.6) 50%, transparent 100%);
+  padding: 1.5rem;
+  z-index: 2; /* Puts the overlay in front of the image */
   color: white;
+  opacity: 1;
+  transition: background 0.3s ease;
 }
 
 .portfolio-title {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.75rem; /* 28px */
   font-weight: 600;
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .portfolio-summary {
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
