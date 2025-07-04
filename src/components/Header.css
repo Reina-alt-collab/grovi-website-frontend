@@ -1,0 +1,51 @@
+/* src/components/Header.css */
+.site-header {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem; /* Overriding container padding */
+  padding-bottom: 1rem;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.logo:hover {
+  opacity: 1; /* Don't change opacity on logo hover */
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.cta-button {
+  background-color: #F07255; /* Your Vibrant Coral accent color */
+  color: #FFFFFF; /* White text */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e06044; /* A slightly darker shade for hover */
+}

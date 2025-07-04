@@ -1,0 +1,8 @@
+/* src/components/Footer.css */
+.site-footer-main {
+  border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
+  text-align: center;
+  color: #6b7280; /* A slightly lighter text color */
+  margin-top: 4rem;
+}
