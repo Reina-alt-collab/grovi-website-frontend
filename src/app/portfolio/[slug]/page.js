@@ -1,6 +1,11 @@
 // src/app/portfolio/[slug]/page.js
-import { client } from "../../../../lib/sanity"; // Adjust path to sanity.js
-import { urlFor } from "../../../../lib/image";  // Adjust path to image.js
+
+// --- CORRECTED IMPORTS ---
+// This tells the file to go up three levels to find the 'lib' folder.
+import { client } from '../../../lib/sanity';
+import { urlFor } from '../../../lib/image';
+// --- END OF CORRECTIONS ---
+
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 
@@ -18,27 +23,27 @@ export default async function ProjectPage({ params }) {
   }
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-charcoal mb-4">{project.title}</h1>
+    <article className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-center mb-8">{project.title}</h1>
       
       <Image 
         src={urlFor(project.coverImage).width(1200).height(600).url()}
         width={1200}
         height={600}
         alt={`Imagen de ${project.title}`}
-        className="w-full h-auto object-cover rounded-lg mb-8"
+        className="w-full h-auto object-cover rounded-lg mb-12"
       />
 
-      <div className="prose lg:prose-xl max-w-none">
-        <h2 className="text-2xl font-semibold">El Reto</h2>
+      <div className="prose lg:prose-xl max-w-3xl mx-auto">
+        <h2 className="text-3xl font-semibold">El Reto</h2>
         <PortableText value={project.theChallenge} />
 
-        <h2 className="text-2xl font-semibold mt-8">La Metodología</h2>
+        <h2 className="text-3xl font-semibold mt-10">La Metodología</h2>
         <PortableText value={project.theMethodology} />
 
-        <h2 className="text-2xl font-semibold mt-8">Los Resultados</h2>
+        <h2 className="text-3xl font-semibold mt-10">Los Resultados</h2>
         <PortableText value={project.theResults} />
       </div>
-    </main>
+    </article>
   );
 }
