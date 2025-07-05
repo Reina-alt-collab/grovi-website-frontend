@@ -1,45 +1,47 @@
 /* src/components/Header.css */
 .site-header {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--color-border);
-  background-color: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  background-color: var(--background);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem; /* Overriding container padding */
-  padding-bottom: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
-  font-family: var(--font-heading);
+  font-family: var(--font-poppins);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  color: var(--foreground);
   text-decoration: none;
-  color: var(--color-text);
 }
 
-.logo:hover {
-  opacity: 1; /* Don't change opacity on logo hover */
-}
-
-nav {
+.site-nav {
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
 
-nav a {
+.site-nav a {
+  font-family: var(--font-poppins);
   font-weight: 600;
-  font-size: 1rem;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
+
+.site-nav a:hover {
+  color: #F07255; /* Coral accent color */
+}
+
 .cta-button {
-  background-color: #F07255; /* Your Vibrant Coral accent color */
-  color: #FFFFFF; /* White text */
+  background-color: #F07255;
+  color: white !important; /* Use !important to override link color */
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
@@ -47,5 +49,5 @@ nav a {
 }
 
 .cta-button:hover {
-  background-color: #e06044; /* A slightly darker shade for hover */
+  background-color: #e06044;
 }

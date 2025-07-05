@@ -1,52 +1,36 @@
-// src/app/page.js
-import Link from 'next/link';
-import { client } from '../lib/sanity';
-import { urlFor } from '../lib/image';
-import Image from 'next/image';
-import './PortfolioGrid.css'; // Make sure this CSS file is imported
+// src/app/layout.js
+import { Inter, Poppins } from 'next/font/google';
+import './globals.css';
+import Header from '../components/Header'; // Import the Header
+import Footer from '../components/Footer'; // Import the Footer
 
-async function getProjects() {
-  const projects = await client.fetch(`*[_type == "project"] | order(_createdAt desc)`);
-  return projects;
-}
+// Setup the fonts we chose for the brand
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+});
 
-export default async function HomePage() {
-  const projects = await getProjects();
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
+export const metadata = {
+  title: 'Grovi - E-commerce Growth Partner',
+  description: 'Escalamos marcas de e-commerce de manera sostenible y rentable.',
+};
+
+export default function RootLayout({ children }) {
   return (
-    <main>
-      {/* You can add a Hero/Intro section here later */}
-      
-      <section id="work" className="portfolio-section">
-        <div className="container">
-          <h2 className="section-title">Mi Portafolio</h2>
-          
-          <div className="portfolio-grid">
-            {projects?.map((project) => (
-              // The Link is the parent card element
-              <Link key={project._id} href={`/portfolio/${project.slug.current}`} className="portfolio-card">
-                
-                {/* The Image is the background */}
-                <Image
-                  src={urlFor(project.coverImage).width(500).height(375).url()}
-                  alt={`Imagen de portada para ${project.title}`}
-                  width={500}
-                  height={375}
-                  className="portfolio-image"
-                />
-                
-                {/* The Div is the text overlay */}
-                <div className="portfolio-overlay">
-                  <h3 className="portfolio-title">{project.title}</h3>
-                  <p className="portfolio-summary">{project.summary}</p>
-                </div>
-
-              </Link>
-            ))}
-          </div>
-
-        </div>
-      </section>
-    </main>
+    <html lang="es" className={`${poppins.variable} ${inter.variable}`}>
+      <body>
+        <Header /> {/* This renders your Header on every page */}
+        <main>
+          {children} {/* This is where your page content goes */}
+        </main>
+        <Footer /> {/* This renders your Footer on every page */}
+      </body>
+    </html>
   );
 }
